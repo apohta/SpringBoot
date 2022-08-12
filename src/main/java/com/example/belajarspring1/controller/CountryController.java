@@ -5,8 +5,11 @@ import com.example.belajarspring1.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -56,13 +59,19 @@ public class CountryController {
     }
 
     @PostMapping("/addcountry")
-    public Country addCountry(@RequestBody Country country)
+    public Country addCountry(@Valid @RequestBody Country country, Errors errors)
     {
+        if (errors.hasErrors()){
+            for (ObjectError error : errors.getAllErrors()){
+                System.err.println(error.getDefaultMessage());
+            }
+            throw new RuntimeException("Validation Error");
+        }
         return countryService.addCountry(country);
     }
 
     @PutMapping("/updatecountry/{id}")
-    public ResponseEntity<Country> updateCountry(@PathVariable(value = "id") int id, @RequestBody Country country)
+    public ResponseEntity<Country> updateCountry(@Valid @PathVariable(value = "id") int id, @RequestBody Country country)
     {
         try {
             Country  existCountry=countryService.getCountrybyID(id);

@@ -34,7 +34,7 @@ public class LoggingTest {
 
     @Test
     void test_getAllCountries(){
-        for(int i=0; i<15; i++){
+        for(int i=0; i<3; i++){
             List<Country> mycountries=new ArrayList<Country>();
             mycountries.add(new Country(1, "Indonesia","Jakarta"));
             mycountries.add(new Country(2, "UK", "London"));
@@ -48,7 +48,7 @@ public class LoggingTest {
 
     @Test
     void test_getCountryByID(){
-        for(int i=0;  i<15; i++)
+        for(int i=0;  i<3; i++)
         {
             List<Country> mycountries=new ArrayList<Country>();
             mycountries.add(new Country(1, "Indonesia", "Jakarta"));
@@ -64,7 +64,7 @@ public class LoggingTest {
 
     @Test
     void test_getCountrybyName(){
-        for(int i=0; i<15; i++)
+        for(int i=0; i<3; i++)
         {
             List<Country> mycountries=new ArrayList<Country>();
             mycountries.add(new Country(1, "Indonesia", "Jakarta"));
@@ -80,7 +80,7 @@ public class LoggingTest {
 
     @Test
     void   test_addCountry(){
-        for (int i=0; i<15; i++)
+        for (int i=0; i<3; i++)
         {
             Country country=new Country(4,"Canberra", "Australia");
 
@@ -91,7 +91,7 @@ public class LoggingTest {
 
     @Test
     void test_updateCountry(){
-        for (int i=0; i<15; i++)
+        for (int i=0; i<3; i++)
         {
             Country country=new Country(4,"Canberra", "Australia");
 
@@ -103,7 +103,7 @@ public class LoggingTest {
 
     @Test
     void test_deleteCountry(){
-        for (int i=0; i<15; i++)
+        for (int i=0; i<3; i++)
         {
             Country country=new Country(4,"Canberra", "Australia");
             countryService.deleteCountry(country);

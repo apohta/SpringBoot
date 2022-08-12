@@ -1,22 +1,23 @@
 package com.example.belajarspring1.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "Country")
-public class Country {
+@Table(name = "country")
+public class Country implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @Column(name = "country_name")
-    String countryName;
+    @NotEmpty(message = "Capital Name is required")
+    private String countryCapital;
 
-    @Column(name = "capital")
-    String countryCapital;
+    @NotEmpty(message = "Country Name is required")
+    private String countryName;
 
     public Country(){
 

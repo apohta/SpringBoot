@@ -2,15 +2,12 @@ package com.example.belajarspring1.services;
 
 
 import com.example.belajarspring1.beans.Country;
-import com.example.belajarspring1.controller.AddResponse;
 import com.example.belajarspring1.repositories.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import javax.validation.Valid;
 import java.util.List;
 
 @Component
@@ -51,7 +48,8 @@ public class CountryService {
         return country;
     }
 
-    public Country addCountry(Country country)
+
+    public Country addCountry(@Valid Country country)
     {
         country.setId(getMaxId());
         countryrep.save(country);
@@ -63,7 +61,7 @@ public class CountryService {
         return countryrep.findAll().size()+1;
     }
 
-    public Country updateCountry(Country country)
+    public Country updateCountry(@Valid Country country)
     {
         countryrep.save(country);
         return country;
